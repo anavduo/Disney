@@ -18,8 +18,8 @@ public class UserDetailsCustomService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
-//    @Autowired
-//    private EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -36,9 +36,9 @@ public class UserDetailsCustomService implements UserDetailsService {
         userEntity.setUsername(userDTO.getUsername());
         userEntity.setPassword(userDTO.getPassword());
         userEntity = this.userRepo.save(userEntity);
-//        if (userEntity != null) {
-//            emailService.sendWelcomeEmailTo(userEntity.getUsername());
-//        }
+        if (userEntity != null) {
+            emailService.sendWelcomeEmailTo(userEntity.getUsername());
+        }
         return userEntity != null;
 
     }

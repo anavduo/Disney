@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "18a2227e-7054-4540-a2cf-4c73969207c2",
+		"name": "Alkemy_Disney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin@gmail.com\",\n    \"password\":\"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signup"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "anavduo@hotmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin@gmail.com\",\n    \"password\":\"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTYxMTIzMCwiaWF0IjoxNjQxNTc1MjMwfQ.bTE3ORDCBUyF733h6dCQ-AMA4YuRGLjAlRTnNqdZEbc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/home",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTYxNjA2MCwiaWF0IjoxNjQxNTgwMDYwfQ.gwJZRAE7lPPBzq9l_VJ_vWAXpa5xRBZ9nyAnHXFzp7M",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"image\": \"/img4.jpg\",\n    \"title\": \"Pluto's Dream House \",\n    \"creationDate\": \"1940/02/01\",\n    \"rating\": 3\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movies",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify  Movie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"image\": \"/img4.jpg\",\n    \"title\": \"Pluto's Dream House \",\n    \"creationDate\": \"1940/02/01\",\n    \"rating\": 4\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movies/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Char to Movie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/movies/2/character/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"2",
+						"character",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete movie",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/movies/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Genre",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"action\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Genres",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/genres",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Genre",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"no drama\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soft Delete Gerne",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"drama\",\n    \"deleted\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/genres/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Genre",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/genres/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"genres",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Character",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTYxMTIzMCwiaWF0IjoxNjQxNTc1MjMwfQ.bTE3ORDCBUyF733h6dCQ-AMA4YuRGLjAlRTnNqdZEbc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Minnie Mousse\",\n    \"image\": \"/img4.jpg\",\n    \"age\": 10,\n    \"wheight\": 3,\n    \"story\": \"Add story\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/characters",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Characteres",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTYxMTIzMCwiaWF0IjoxNjQxNTc1MjMwfQ.bTE3ORDCBUyF733h6dCQ-AMA4YuRGLjAlRTnNqdZEbc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/characters",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Character",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTU5Nzc4MywiaWF0IjoxNjQxNTYxNzgzfQ.QV2nyTp4_oFhInVbw1Qm4JaoFKtG4p4brOI7Gu5A79I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mickey\",\n    \"image\": \"/img2.jpg\",\n    \"age\": 193,\n    \"wheight\": 3.9,\n    \"story\": \"This is the new story\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/characters/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Movie to Char",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTYxMTIzMCwiaWF0IjoxNjQxNTc1MjMwfQ.bTE3ORDCBUyF733h6dCQ-AMA4YuRGLjAlRTnNqdZEbc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/characters/3/movie/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"3",
+						"movie",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Char by Name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBob3RtYWlsLmNvbSIsImV4cCI6MTY0MTYxMTIzMCwiaWF0IjoxNjQxNTc1MjMwfQ.bTE3ORDCBUyF733h6dCQ-AMA4YuRGLjAlRTnNqdZEbc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/characters/filters?name=pluto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"characters",
+						"filters"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "pluto"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

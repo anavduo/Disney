@@ -10,9 +10,7 @@ import org.springframework.stereotype.Repository;
 //@author aduo
 
 @Repository
-public interface GenreRepo extends JpaRepository<GenreEntity, String> {
+public interface GenreRepo extends JpaRepository<GenreEntity, Long> {
 
-//    @Query("SELECT g FROM Genre g WHERE g.name= :name ")
-//    public GenreEntity findByName(@Param("name") String name);
 
 }

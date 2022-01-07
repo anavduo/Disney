@@ -9,12 +9,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MovieMapper {
-//    @Autowired
-//    private CharMapper charMapper;
+    @Lazy
+    @Autowired
+    private CharMapper charMapper;
     @Autowired
     private GenreMapper genreMapper;
 
@@ -54,7 +56,7 @@ public class MovieMapper {
         List<MovieDTO> dtos = new ArrayList<>();
 
         for (MovieEntity entity: entities) {
-            dtos.add(this.movieEntity2DTO(entity,load));
+            dtos.add(this.movieEntity2DTO(entity,false));
             
         }
         return dtos;
@@ -64,7 +66,7 @@ public class MovieMapper {
         List<MovieEntity> entities = new ArrayList<>();
 
         for (MovieDTO dto: dtoList) {
-            entities.add(this.movieDTO2Entity(dto, load));
+            entities.add(this.movieDTO2Entity(dto, false));
         }
         return entities;
     }

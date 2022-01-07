@@ -15,17 +15,17 @@ public interface MovieService {
 
     List<MovieBasicDTO> getBasicList(); //Basic list movies
 
-    void delete(Long id);
+    void deleteMovieById(Long id);
 
     MovieDTO modify(Long id, MovieDTO movieDTO);
 
-    void addCharacter(Long movieId, String characterId);
+    void addCharacter(Long movieId, Long characterId);
 
     MovieEntity getById(Long id);
 
     MovieDTO getByDetails(Long id);
 
-    void addGenre(Long movieId, String genreId);
+    void addGenre(Long movieId, Long genreId);
 
     List<MovieDTO> getByFilters(String name, Set<Long> genre, String order);
 }

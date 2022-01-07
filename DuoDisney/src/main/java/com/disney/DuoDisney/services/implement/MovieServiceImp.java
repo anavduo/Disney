@@ -49,7 +49,7 @@ public class MovieServiceImp implements MovieService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteMovieById(Long id) {
         movieRepo.deleteById(id);
     }
 
@@ -83,11 +83,11 @@ public class MovieServiceImp implements MovieService {
     }
 
     @Override
-    public void addCharacter(Long movieId, String characterId) {
+    public void addCharacter(Long movieId, Long characterId) {
         MovieEntity movieEntity = this.getById(movieId);
         movieEntity.getCharacters().size();
 
-        CharacterEntity character = charService.getById(characterId);
+        CharacterEntity character = charService.getCharById(characterId);
         movieEntity.getCharacters().add(character);
         movieRepo.save(movieEntity);
     }
@@ -109,7 +109,7 @@ public class MovieServiceImp implements MovieService {
     }
 
     @Override
-    public void addGenre(Long movieId, String genreId) {
+    public void addGenre(Long movieId, Long genreId) {
     }
 
     @Override

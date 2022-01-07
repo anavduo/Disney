@@ -38,7 +38,7 @@ public class GenreServiceImp implements GenreService {
     }
 
     @Override
-    public GenreDTO modify(String id, GenreDTO genreDTO) {
+    public GenreDTO modify(Long id, GenreDTO genreDTO) {
         GenreEntity savedGenre = this.getById(id);
         savedGenre.setName(genreDTO.getName());
         GenreEntity editedGenre = genreRepo.save(savedGenre);
@@ -47,10 +47,11 @@ public class GenreServiceImp implements GenreService {
     }
 
     @Override
-    public void deleteGenreById(String id) {
+    public void deleteGenreById(Long id) {
+        genreRepo.deleteById(id);
     }
 
-    public GenreEntity getById(String id) {
+    public GenreEntity getById(Long id) {
         Optional<GenreEntity> genreEntity = genreRepo.findById(id);
         if (!genreEntity.isPresent()) {
             throw new ParamNotFound("Genre does not exist: " + id);

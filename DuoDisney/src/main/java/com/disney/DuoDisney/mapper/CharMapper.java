@@ -86,3 +86,11 @@ public class CharMapper {
         return basicList;
     }
 }
+//@Configuration
+//public class ModelMapperConfig {
+//    
+//    @Bean
+//    public ModelMapper ModelMapperConfig() {
+//        return new ModelMapper();
+//    }   
+//}

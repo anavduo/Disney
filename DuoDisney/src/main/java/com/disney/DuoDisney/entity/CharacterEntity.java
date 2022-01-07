@@ -10,7 +10,7 @@ import org.hibernate.annotations.Where;
 
 //@author aduo
 @Table(name = "characters")
-@SQLDelete(sql = "UPDATE characters SET deleted = true WHERE id=?") //This query provide the soft delete, as an update over icon
+@SQLDelete(sql = "UPDATE characters SET deleted = true WHERE id=?") //This query provides the soft delete, as an update over icon
 @Where(clause = "deleted=false")
 @Getter
 @Setter
@@ -29,6 +29,7 @@ public class CharacterEntity {
     private String story;
     @ManyToMany(mappedBy = "characters", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MovieEntity> movies = new ArrayList<>();
-    private boolean alta;
+      // Soft Delete:
+     private boolean deleted = Boolean.FALSE;
 
 }

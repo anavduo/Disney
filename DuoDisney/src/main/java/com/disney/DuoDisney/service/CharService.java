@@ -5,32 +5,28 @@ import com.disney.DuoDisney.dto.CharacterDTO;
 import com.disney.DuoDisney.entity.CharacterEntity;
 import java.util.List;
 import java.util.Set;
-import org.springframework.stereotype.Service;
 
 //@author aduo
-
-@Service
 public interface CharService {
 
-
-    public List<CharacterDTO> getAll();
+    List<CharacterDTO> getAllCharacters();
 
     List<CharBasicDTO> getBasicCharList();
 
-    public CharacterDTO modify(String id, CharacterDTO charDTO);
+    CharacterDTO modify(Long id, CharacterDTO charDTO);
 
-    public CharacterDTO save(CharacterDTO charDTO);
+    CharacterDTO save(CharacterDTO charDTO);
 
-    public CharacterEntity getById(String id);
+    CharacterEntity getCharById(Long id);
 
-    public void delete(String id);
+    void delete(Long id);
 
-    public List<CharacterDTO> getByFilters(String name, Integer age, Set<Long> movies, String order);
+    List<CharacterDTO> getByFilters(String name, Integer age, Set<Long> movies, String order);
 
-    public CharacterDTO getDetailById(String id);
+    CharacterDTO getDetailById(Long id);
 
-    public void addMovie(String id, Long idMovie);
+    void addMovie(Long id, Long idMovie);
 
-    public void removeMovie(String id, Long idMovie);
+    void removeMovie(Long id, Long idMovie);
 
 }

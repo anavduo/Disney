@@ -34,7 +34,7 @@ public class UserAuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponseDTO> signup(@RequestBody UserDTO user) {
+    public ResponseEntity<AuthResponseDTO> signup(@Valid @RequestBody UserDTO user) {
         this.userDetailsCustomService.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

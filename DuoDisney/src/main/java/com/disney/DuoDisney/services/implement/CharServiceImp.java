@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 @Service
 public class CharServiceImp implements CharService {
@@ -27,16 +28,17 @@ public class CharServiceImp implements CharService {
     private CharRepo charRepo;
     @Autowired
     private MovieMapper movieMapper;
-//    @Autowired
-//    private MovieService movieService;
+    @Lazy
+    @Autowired
+    private MovieService movieService;
     @Autowired
     private CharSpecification charSpecification;
 
     @Override
-    public List<CharacterDTO> getAll() {
+    public List<CharacterDTO> getAllCharacters() {
         List<CharacterEntity> charEntities = charRepo.findAll();
-        List<CharacterDTO> dtoList = charMapper.charEntityList2DTOList(charEntities, true);
-        return dtoList;
+        List<CharacterDTO> result = charMapper.charEntityList2DTOList(charEntities, false);
+        return result;
     }
 
     @Override
@@ -47,8 +49,8 @@ public class CharServiceImp implements CharService {
     }
 
     @Override
-    public CharacterDTO modify(String id, CharacterDTO charDTO) {
-        CharacterEntity savedChar = this.getById(id);
+    public CharacterDTO modify(Long id, CharacterDTO charDTO) {
+        CharacterEntity savedChar = this.getCharById(id);
 
         savedChar.setName(charDTO.getName());
         savedChar.setImage(charDTO.getImage());
@@ -82,7 +84,7 @@ public class CharServiceImp implements CharService {
     }
 
     @Override
-    public CharacterEntity getById(String id) {
+    public CharacterEntity getCharById(Long id) {
 
         Optional<CharacterEntity> charEntity = charRepo.findById(id);
         if (!charEntity.isPresent()) {
@@ -92,7 +94,7 @@ public class CharServiceImp implements CharService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         charRepo.deleteById(id);
     }
 
@@ -106,27 +108,27 @@ public class CharServiceImp implements CharService {
     }
 
     @Override
-    public CharacterDTO getDetailById(String id) {
-        CharacterEntity charEntity = this.getById(id);
+    public CharacterDTO getDetailById(Long id) {
+        CharacterEntity charEntity = this.getCharById(id);
         CharacterDTO result = charMapper.charEntity2DTO(charEntity, true);
         return result;
     }
 
     @Override
-    public void addMovie(String id, Long idMovie) {
+    public void addMovie(Long id, Long idMovie) {
         CharacterEntity charEntity = charRepo.getById(id);
         charEntity.getMovies().size();
-//        MovieEntity movie = this.movieService.getById(idMovie);
-//        charEntity.getMovies().add(movie);
+        MovieEntity movie = this.movieService.getById(idMovie);
+        charEntity.getMovies().add(movie);
         this.charRepo.save(charEntity);
     }
 
     @Override
-    public void removeMovie(String id, Long idMovie) {
+    public void removeMovie(Long id, Long idMovie) {
         CharacterEntity charEntity = charRepo.getById(id);
         charEntity.getMovies().size();
-//        MovieEntity movie = this.movieService.getById(idMovie);
-//        charEntity.getMovies().remove(movie);
+        MovieEntity movie = this.movieService.getById(idMovie);
+        charEntity.getMovies().remove(movie);
         this.charRepo.save(charEntity);
     }
 }
