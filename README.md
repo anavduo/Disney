@@ -17,7 +17,7 @@ You will also find a postman collection with notation regarding the different te
 1. My tools: Netbeans IDE / Postman /  Workbench / Maven
 2. You can clone the project with Git
 3. Create a database called 'disney' with Workbench, DBeaver or one of your choose.
-4. After you have cloned the project, open it with your an IDE, run it and check you will need to add data to you Database to check it works.
+4. After you have cloned the project, open it with your an IDE, run it and check you will need to add data to your Database to check it works.
 5. You can check the endpoints with Postman ( you will need to have a registered user).
-6. Hope you have fun exploring the Disney Characters Vorld!!
-## thanks to Alkemy for this oportunity!
+6. Hope you have fun exploring the Disney Characters World!!
+## thanks to Alkemy for this opportunity!
