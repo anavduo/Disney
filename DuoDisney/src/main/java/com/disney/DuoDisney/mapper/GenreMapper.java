@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class GenreMapper {
 
-//    @Autowired
-//    private MovieMapper movieMapper;
+    @Autowired
+    private MovieMapper movieMapper;
 
     public GenreEntity genreDTO2Entity(GenreDTO dto) {
         GenreEntity genreEntity = new GenreEntity();
@@ -28,21 +28,21 @@ public class GenreMapper {
         dto.setId(genreEntity.getId());
         dto.setName(genreEntity.getName());
         
-//        if (loadMovie) {
-//            List<MovieDTO> dtoList = new ArrayList<>();
-//            for (MovieEntity entity : genreEntity.getMovies()) {
-//                dtoList.add(movieMapper.movieEntity2DTO(entity, false));
-//            }
-//            dto.setMovies(dtoList);
-//        }
+        if (loadMovie) {
+            List<MovieDTO> dtoList = new ArrayList<>();
+            for (MovieEntity entity : genreEntity.getMovies()) {
+                dtoList.add(movieMapper.movieEntity2DTO(entity, false));
+            }
+            dto.setMovies(dtoList);
+        }
         return dto;
     }
 
-    public List<GenreDTO> genreEntityList2DTOList(List<GenreEntity> entities, boolean loadMovie) {
+    public List<GenreDTO> genreEntityList2DTOList(List<GenreEntity> entities, boolean loadMovies) {
         List<GenreDTO> dtoList = new ArrayList<>();
 
         for (GenreEntity entity : entities) {
-            dtoList.add(this.genreEntity2DTO(entity, loadMovie));
+            dtoList.add(this.genreEntity2DTO(entity, loadMovies));
         }
         return dtoList;
     }

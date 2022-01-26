@@ -75,7 +75,7 @@ public class CharacterController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PostMapping("/{id}/movie/{idMovie}")
+    @PutMapping("/{id}/movie/{idMovie}")
     public ResponseEntity<Void> addMovie(@PathVariable Long id, @PathVariable Long idMovie) {
         this.charService.addMovie(id, idMovie);
         return ResponseEntity.status(HttpStatus.CREATED).build();

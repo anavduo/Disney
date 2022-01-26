@@ -41,6 +41,11 @@ public class GenreController {
         GenreDTO editedGenre = genreService.modify(id, genreDTO);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(editedGenre);
     }
+     @PutMapping("/{genreId}/movie/{movieId}")
+    public ResponseEntity<Void> addMovie(@PathVariable Long genreId, @PathVariable Long movieId) {
+        genreService.addMovie(genreId, movieId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

@@ -48,7 +48,7 @@ public class EmailServiceImp implements EmailService {
             System.out.println(response.getBody());
             System.out.println(response.getHeaders());
         } catch (IOException e) {
-            System.out.println("There was an error when sending the email.");
+            System.out.println("There was an error when sending the email: " + e.getMessage());
         }
     }
 }

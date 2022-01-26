@@ -60,6 +60,11 @@ public class MovieController {
     @PutMapping("/{movieId}/character/{charId}")
     public ResponseEntity<Void> addCharacter(@PathVariable Long movieId, @PathVariable Long charId) {
         movieService.addCharacter(movieId, charId);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+    @PutMapping("/{movieId}/genre/{genreId}")
+    public ResponseEntity<Void> addGenre(@PathVariable Long movieId, @PathVariable Long genreId) {
+        movieService.addGenre(movieId, genreId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

@@ -2,10 +2,12 @@ package com.disney.DuoDisney.services.implement;
 
 import com.disney.DuoDisney.dto.GenreDTO;
 import com.disney.DuoDisney.entity.GenreEntity;
+import com.disney.DuoDisney.entity.MovieEntity;
 import com.disney.DuoDisney.exception.ParamNotFound;
 import com.disney.DuoDisney.mapper.GenreMapper;
 import com.disney.DuoDisney.repository.GenreRepo;
 import com.disney.DuoDisney.service.GenreService;
+import com.disney.DuoDisney.service.MovieService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class GenreServiceImp implements GenreService {
     private GenreMapper genreMapper;
     @Autowired
     private GenreRepo genreRepo;
+  
+//    @Autowired
+//    private MovieService movieService;
 
     @Override
     public GenreDTO save(GenreDTO genreDto) {
@@ -33,13 +38,13 @@ public class GenreServiceImp implements GenreService {
     @Override
     public List<GenreDTO> getAllGenres() {
         List<GenreEntity> entities = genreRepo.findAll();
-        List<GenreDTO> result = genreMapper.genreEntityList2DTOList(entities, false);
+        List<GenreDTO> result = genreMapper.genreEntityList2DTOList(entities, true);
         return result;
     }
 
     @Override
     public GenreDTO modify(Long id, GenreDTO genreDTO) {
-        GenreEntity savedGenre = this.getById(id);
+        GenreEntity savedGenre = this.getGenreById(id);
         savedGenre.setName(genreDTO.getName());
         GenreEntity editedGenre = genreRepo.save(savedGenre);
         GenreDTO result = genreMapper.genreEntity2DTO(editedGenre, false);
@@ -51,11 +56,21 @@ public class GenreServiceImp implements GenreService {
         genreRepo.deleteById(id);
     }
 
-    public GenreEntity getById(Long id) {
+    public GenreEntity getGenreById(Long id) {
         Optional<GenreEntity> genreEntity = genreRepo.findById(id);
         if (!genreEntity.isPresent()) {
             throw new ParamNotFound("Genre does not exist: " + id);
         }
         return genreEntity.get();
+    }
+
+    @Override
+    public void addMovie(Long genreId, Long movieId) {
+        GenreEntity genreEntity=this.getGenreById(genreId);
+//        genreEntity.getMovies().size();
+//
+//        MovieEntity movieEntity = movieService.getById(movieId);
+//        genreEntity.getMovies().add(movieEntity);
+        genreRepo.save(genreEntity);
     }
 }

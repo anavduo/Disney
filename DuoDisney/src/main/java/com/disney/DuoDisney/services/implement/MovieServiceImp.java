@@ -4,12 +4,14 @@ import com.disney.DuoDisney.dto.MovieBasicDTO;
 import com.disney.DuoDisney.dto.MovieDTO;
 import com.disney.DuoDisney.dto.MovieFilterDTO;
 import com.disney.DuoDisney.entity.CharacterEntity;
+import com.disney.DuoDisney.entity.GenreEntity;
 import com.disney.DuoDisney.entity.MovieEntity;
 import com.disney.DuoDisney.exception.ParamNotFound;
 import com.disney.DuoDisney.mapper.MovieMapper;
 import com.disney.DuoDisney.repository.MovieRepo;
 import com.disney.DuoDisney.repository.specification.MovieSpecification;
 import com.disney.DuoDisney.service.CharService;
+import com.disney.DuoDisney.service.GenreService;
 import com.disney.DuoDisney.service.MovieService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -28,8 +30,10 @@ public class MovieServiceImp implements MovieService {
     @Autowired
     private MovieRepo movieRepo;
     @Autowired
+    private GenreService genreService;
+    @Autowired
     private CharService charService;
-      @Autowired
+    @Autowired
     private MovieSpecification movieSpecification;
 
     @Override
@@ -77,7 +81,7 @@ public class MovieServiceImp implements MovieService {
         //savedMovie.setCharacters(charMapper.charDTOList2EntityList(movieDTO.getCharacters()));
 
         MovieEntity movieEntity = movieRepo.save(savedMovie);
-        MovieDTO result = movieMapper.movieEntity2DTO(movieEntity, false);
+        MovieDTO result = movieMapper.movieEntity2DTO(movieEntity, true);
 
         return result;
     }
@@ -110,6 +114,12 @@ public class MovieServiceImp implements MovieService {
 
     @Override
     public void addGenre(Long movieId, Long genreId) {
+        MovieEntity movieEntity = this.getById(movieId);
+        movieEntity.getGenres().size();
+
+        GenreEntity genre = genreService.getGenreById(genreId);
+        movieEntity.getGenres().add(genre);
+        movieRepo.save(movieEntity);
     }
 
     @Override
